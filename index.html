@@ -4,8 +4,24 @@
 	<meta charset="UTF-8">
 	<title>TP formation AngularJS</title>
 	<script src="/vendors/angularjs/angular.js"></script>
+	<style>
+		.active {
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
+
+	<ul ng-init="nav = 'home'">
+		<li ng-class="{active: nav === 'home' }"><a href="" ng-click="nav = 'home'">Home</a></li>
+		<li ng-class="{active: nav === 'update' }"><a href="" ng-click="nav = 'update'">Add</a></li>
+		<li ng-class="{active: nav === 'dashboard' }"><a href="" ng-click="nav = 'dashboard'">Dashboard</a></li>
+	</ul>
+
+	<div ng-if="nav === 'home'" ng-include="'app/views/home.html'"></div>
+	<div ng-if="nav === 'update'" ng-include="'app/views/add.html'"></div>
+	<div ng-if="nav === 'dashboard'" ng-include="'app/views/dashboard.html'"></div>
+
 	<script src="/app/app.js"></script>
 </body>
 </html>
