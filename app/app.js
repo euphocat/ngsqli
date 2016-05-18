@@ -1,3 +1,7 @@
 (function () {
-angular.module('bibliotheque', []);
+
+  'use strict';
+
+  angular.module('bibliotheque', ['ui.bootstrap']);
+
 })();

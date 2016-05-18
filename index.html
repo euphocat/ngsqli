@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="bibliotheque">
 <head>
-	<meta charset="UTF-8">
-	<title>TP formation AngularJS</title>
-	<script src="/vendors/angularjs/angular.js"></script>
-	<style>
-		.active {
-			font-weight: bold;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>TP formation AngularJS</title>
+  <script src="/vendors/angularjs/angular.js"></script>
+  <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
+  <style>
+    .active {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-	<ul ng-init="nav = 'home'">
-		<li ng-class="{active: nav === 'home' }"><a href="" ng-click="nav = 'home'">Home</a></li>
-		<li ng-class="{active: nav === 'update' }"><a href="" ng-click="nav = 'update'">Add</a></li>
-		<li ng-class="{active: nav === 'dashboard' }"><a href="" ng-click="nav = 'dashboard'">Dashboard</a></li>
-	</ul>
+<div ng-controller="MainCtrl as ctrl">
 
-	<div ng-if="nav === 'home'" ng-include="'app/views/home.html'"></div>
-	<div ng-if="nav === 'update'" ng-include="'app/views/add.html'"></div>
-	<div ng-if="nav === 'dashboard'" ng-include="'app/views/dashboard.html'"></div>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: ctrl.isActive('home') }">
+          <a href="" ng-click="ctrl.setActive('home')">Home</a>
+        </li>
+        <li ng-class="{active: ctrl.isActive('update') }">
+          <a href="" ng-click="ctrl.setActive('update')">Add</a>
+        </li>
+        <li ng-class="{active: ctrl.isActive('dashboard') }">
+          <a href="" ng-click="ctrl.setActive('dashboard')">Dashboard</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-	<script src="/app/app.js"></script>
+  <div class="container">
+    <div ng-if="ctrl.isActive('home')"
+         ng-controller="HomeCtrl as ctrl"
+         ng-include="'app/views/home.html'"></div>
+    <div ng-if="ctrl.isActive('update')"
+         ng-controller="EditionCtrl as ctrl"
+         ng-include="'app/views/add.html'"></div>
+    <div ng-if="ctrl.isActive('dashboard')"
+         ng-controller="DashboardCtrl as ctrl"
+         ng-include="'app/views/dashboard.html'"></div>
+  </div>
+
+</div>
+
+<script src="/vendors/bootstrap/ui-bootstrap-tpls-1.3.2.min.js"></script>
+<script src="/app/app.js"></script>
+<script src="/app/controllers/MainCtrl.js"></script>
+<script src="/app/controllers/HomeCtrl.js"></script>
+<script src="/app/controllers/EditionCtrl.js"></script>
+<script src="/app/controllers/DashboardCtrl.js"></script>
 </body>
 </html>
