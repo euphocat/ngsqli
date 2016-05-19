@@ -13,8 +13,8 @@
     <td>{{book.author.firstName}}</td>
     <td>{{book.author.lastName}}</td>
     <td>
-      <button ng-click="ctrl.deleteBook(book.id)">Delete</button>
-      <button ng-click="ctrl.editBook(book.id)">Edit</button>
+      <button class="btn" ng-click="ctrl.deleteBook(book.id)">Delete</button>
+      <a href="/edition/{{book.id}}" class="btn btn-primary">Edit</a>
     </td>
   </tr>
 </table>

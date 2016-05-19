@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('common')
-    .factory('navigationService', [function () {
+    .factory('navigationService', ['$location', function ($location) {
 
       var nav = 'home';
       var bookNavId;
@@ -14,7 +14,16 @@
       };
 
       function isActive (menuItem) {
-        return nav === menuItem;
+
+        var locationPath = $location.path();
+        var path = locationPath === '/' ? '/home' : locationPath;
+
+        var currentRoute = path
+          .substring(1)
+          .split('/')[0];
+
+        return currentRoute === menuItem;
+
       }
 
       function setActive (menu, id) {
@@ -25,5 +34,6 @@
       function getBookNavId () {
         return bookNavId;
       }
+
     }]);
 })();

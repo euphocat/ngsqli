@@ -2,9 +2,11 @@
 <html lang="en" ng-app="bibliotheque">
 <head>
   <meta charset="UTF-8">
+  <base href="/">
   <title>TP formation AngularJS</title>
   <script src="/vendors/angularjs/angular.js"></script>
   <script src="/vendors/angularjs/angular-messages.js"></script>
+  <script src="/vendors/angularjs/angular-route.js"></script>
   <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
   <style>
     .active {
@@ -20,28 +22,19 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li ng-class="{active: ctrl.isActive('home') }">
-          <a href="" ng-click="ctrl.setActive('home')">Home</a>
+          <a href="/">Home</a>
         </li>
-        <li ng-class="{active: ctrl.isActive('update') }">
-          <a href="" ng-click="ctrl.setActive('update')">Add</a>
+        <li ng-class="{active: ctrl.isActive('edition') }">
+          <a href="/edition">Add</a>
         </li>
         <li ng-class="{active: ctrl.isActive('dashboard') }">
-          <a href="" ng-click="ctrl.setActive('dashboard')">Dashboard</a>
+          <a href="/dashboard">Dashboard</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <div class="container">
-    <div ng-if="ctrl.isActive('home')"
-         ng-controller="HomeCtrl as ctrl"
-         ng-include="'app/home/home.html'"></div>
-    <div ng-if="ctrl.isActive('update')"
-         ng-controller="EditionCtrl as ctrl"
-         ng-include="'app/edition/edition.html'"></div>
-    <div ng-if="ctrl.isActive('dashboard')"
-         ng-controller="DashboardCtrl as ctrl"
-         ng-include="'app/dashboard/dashboard.html'"></div>
+  <div class="container" ng-view>
   </div>
 
 </div>

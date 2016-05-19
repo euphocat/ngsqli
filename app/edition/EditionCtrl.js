@@ -3,19 +3,15 @@
   'use strict';
 
   angular.module('edition')
-    .controller('EditionCtrl', ['navigationService', 'bookService',
-      function (navigationService, bookService) {
+    .controller('EditionCtrl', ['$routeParams','navigationService', 'bookService',
+      function ($routeParams, navigationService, bookService) {
 
         var vm = this;
 
         vm.submitBook = submitBook;
 
-        var bookNavId = navigationService.getBookNavId();
-
-        console.log(bookNavId);
-
-        if (bookNavId) {
-          bookService.getBook(bookNavId).success(function (book) {
+        if ($routeParams.id) {
+          bookService.getBook($routeParams.id).success(function (book) {
             vm.book = book;
           })
         }
