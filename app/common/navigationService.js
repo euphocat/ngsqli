@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('bibliotheque')
+  angular.module('common')
     .factory('navigationService', [function () {
 
       var nav = 'home';

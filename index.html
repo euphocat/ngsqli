@@ -35,13 +35,13 @@
   <div class="container">
     <div ng-if="ctrl.isActive('home')"
          ng-controller="HomeCtrl as ctrl"
-         ng-include="'app/views/home.html'"></div>
+         ng-include="'app/home/home.html'"></div>
     <div ng-if="ctrl.isActive('update')"
          ng-controller="EditionCtrl as ctrl"
-         ng-include="'app/views/add.html'"></div>
+         ng-include="'app/edition/edition.html'"></div>
     <div ng-if="ctrl.isActive('dashboard')"
          ng-controller="DashboardCtrl as ctrl"
-         ng-include="'app/views/dashboard.html'"></div>
+         ng-include="'app/dashboard/dashboard.html'"></div>
   </div>
 
 </div>
@@ -49,13 +49,21 @@
 
 <script src="/vendors/bootstrap/ui-bootstrap-tpls-1.3.2.min.js"></script>
 <script src="/app/app.js"></script>
-<script src="/app/controllers/MainCtrl.js"></script>
-<script src="/app/controllers/HomeCtrl.js"></script>
-<script src="/app/controllers/EditionCtrl.js"></script>
-<script src="/app/controllers/DashboardCtrl.js"></script>
+<script src="/app/MainCtrl.js"></script>
 
-<script src="/app/services/backendConstant.js"></script>
-<script src="/app/services/booksService.js"></script>
-<script src="/app/services/navigationService.js"></script>
+<script src="/app/home/module.js"></script>
+<script src="/app/home/HomeCtrl.js"></script>
+
+<script src="/app/edition/module.js"></script>
+<script src="/app/edition/EditionCtrl.js"></script>
+
+<script src="/app/dashboard/module.js"></script>
+<script src="/app/dashboard/DashboardCtrl.js"></script>
+
+<script src="/app/common/module.js"></script>
+<script src="/app/common/navigationService.js"></script>
+<script src="/app/common/backendConstant.js"></script>
+<script src="/app/common/booksService.js"></script>
+
 </body>
 </html>

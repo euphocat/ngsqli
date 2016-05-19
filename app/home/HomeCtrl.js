@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('bibliotheque')
+  angular.module('home')
     .controller('HomeCtrl', ['bookService', 'navigationService', function (bookService, navigationService) {
 
       var vm = this;

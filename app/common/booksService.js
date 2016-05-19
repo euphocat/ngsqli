@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  angular.module('bibliotheque')
+  angular.module('common')
     .factory('bookService', ['$http','BACKEND', function ($http, BACKEND) {
       return {
         getBooks: getBooks,

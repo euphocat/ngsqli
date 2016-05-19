@@ -1,5 +1,5 @@
 (function () {
   'use strict';
-  angular.module('bibliotheque')
+  angular.module('common')
     .constant('BACKEND', 'http://localhost:3000/back');
 })();

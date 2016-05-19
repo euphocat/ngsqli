@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('bibliotheque')
+  angular.module('edition')
     .controller('EditionCtrl', ['navigationService', 'bookService',
       function (navigationService, bookService) {
 
@@ -11,6 +11,8 @@
         vm.submitBook = submitBook;
 
         var bookNavId = navigationService.getBookNavId();
+
+        console.log(bookNavId);
 
         if (bookNavId) {
           bookService.getBook(bookNavId).success(function (book) {

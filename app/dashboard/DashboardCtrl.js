@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('bibliotheque')
+  angular.module('dashboard')
     .controller('DashboardCtrl', function () {
 
     });
