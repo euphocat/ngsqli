@@ -6,10 +6,15 @@
     <th>Title</th>
     <th>Author firstname</th>
     <th>Author lastname</th>
+    <th>Actions</th>
   </tr>
   <tr ng-repeat="book in ctrl.books">
     <td>{{book.title}}</td>
     <td>{{book.author.firstName}}</td>
     <td>{{book.author.lastName}}</td>
+    <td>
+      <button ng-click="ctrl.deleteBook(book.id)">Delete</button>
+      <button ng-click="ctrl.editBook(book.id)">Edit</button>
+    </td>
   </tr>
 </table>

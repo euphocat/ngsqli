@@ -4,7 +4,7 @@
   <div class="panel-body">
     <form name="ctrl.bookEdition"
           class="form-horizontal"
-          ng-submit="ctrl.submitBook()"
+          ng-submit="ctrl.submitBook(ctrl.book)"
           novalidate>
       <div class="form-group"
            ng-class="{'has-success' : ctrl.bookEdition.title.$dirty && ctrl.bookEdition.title.$valid,
@@ -71,7 +71,7 @@
                  class="form-control"
                  id="authorFirstname"
                  name="authorFirstname"
-                 ng-model="ctrl.book.author.firstname"
+                 ng-model="ctrl.book.author.firstName"
                  required>
           <span ng-show="ctrl.bookEdition.authorFirstname.$dirty" ng-messages="ctrl.bookEdition.authorFirstname.$error">
 						<span class="help-block" ng-message="required">

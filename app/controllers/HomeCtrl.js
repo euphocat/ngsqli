@@ -3,14 +3,29 @@
   'use strict';
 
   angular.module('bibliotheque')
-    .controller('HomeCtrl', ['$http', function ($http) {
+    .controller('HomeCtrl', ['bookService', 'navigationService', function (bookService, navigationService) {
 
       var vm = this;
+      vm.deleteBook = deleteBook;
+      vm.editBook = editBook;
 
-      $http.get('http://localhost:3000/back/books')
-        .success(function (data/*, status, headers, config*/) {
-          vm.books = data;
-        });
+      init();
+
+      function init () {
+        bookService.getBooks()
+          .success(function (data) {
+            vm.books = data;
+          });
+      }
+
+      function deleteBook (id) {
+        bookService.deleteBook(id)
+          .success(init);
+      }
+
+      function editBook (id) {
+        navigationService.setActive('update', id)
+      }
 
     }]);
 

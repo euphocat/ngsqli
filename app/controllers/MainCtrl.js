@@ -3,21 +3,13 @@
   'use strict';
 
   angular.module('bibliotheque')
-    .controller('MainCtrl', function () {
+    .controller('MainCtrl', ['navigationService', function (navigationService) {
 
       var vm = this;
 
-      var nav = 'home';
-      vm.isActive = isActive;
-      vm.setActive = setActive;
+      vm.isActive = navigationService.isActive;
+      vm.setActive = navigationService.setActive;
 
-      function isActive (menuItem) {
-        return nav === menuItem;
-      }
-
-      function setActive (menu) {
-        return nav = menu;
-      }
-    });
+    }]);
 
 })();
