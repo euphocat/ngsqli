@@ -1,1 +1,15 @@
 <h1>Home</h1>
+
+
+<table class="table table-bordered">
+  <tr>
+    <th>Title</th>
+    <th>Author firstname</th>
+    <th>Author lastname</th>
+  </tr>
+  <tr ng-repeat="book in ctrl.books">
+    <td>{{book.title}}</td>
+    <td>{{book.author.firstName}}</td>
+    <td>{{book.author.lastName}}</td>
+  </tr>
+</table>
