@@ -1,1 +1,158 @@
-<h1>Add</h1>
+<h1>Edition</h1>
+
+<div class="panel panel-default" style="max-width: 600px; margin: 0 auto">
+  <div class="panel-body">
+    <form name="ctrl.bookEdition"
+          class="form-horizontal"
+          ng-submit="ctrl.submitBook()"
+          novalidate>
+      <div class="form-group"
+           ng-class="{'has-success' : ctrl.bookEdition.title.$dirty && ctrl.bookEdition.title.$valid,
+           'has-error': ctrl.bookEdition.title.$dirty && ctrl.bookEdition.title.$invalid}">
+        <label for="title" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="title"
+                 name="title"
+                 ng-model="ctrl.book.title"
+                 minlength="4"
+                 required/>
+
+          <span ng-show="ctrl.bookEdition.title.$dirty" ng-messages="ctrl.bookEdition.title.$error">
+						<span class="help-block" ng-message="required">
+							Ce champ est obligatoire
+						</span>
+						<span class="help-block" ng-message="minlength">
+							Ce champ doit avoir au moins 4 caractères
+						</span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-success' : ctrl.bookEdition.isbn.$dirty && ctrl.bookEdition.isbn.$valid,
+           'has-error': ctrl.bookEdition.isbn.$dirty && ctrl.bookEdition.isbn.$invalid}">
+        <label for="isbn" class="col-sm-2 control-label">ISBN</label>
+        <div class="col-sm-10">
+          <input type="number"
+                 class="form-control"
+                 id="isbn"
+                 name="isbn"
+                 ng-model="ctrl.book.isbn"
+                 minlength="13">
+          <span ng-show="ctrl.bookEdition.isbn.$dirty" ng-messages="ctrl.bookEdition.isbn.$error">
+						<span class="help-block" ng-message="minlength">
+							Ce champ doit avoir au moins 13 caractères
+						</span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-success' : ctrl.bookEdition.category.$dirty && ctrl.bookEdition.category.$valid,
+           'has-error': ctrl.bookEdition.category.$dirty && ctrl.bookEdition.category.$invalid}">
+        <label for="category" class="col-sm-2 control-label">Category</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="category"
+                 name="category"
+                 ng-model="ctrl.book.category"
+                 required>
+          <span ng-show="ctrl.bookEdition.category.$dirty" ng-messages="ctrl.bookEdition.category.$error">
+						<span class="help-block" ng-message="required">
+							Ce champ est obligatoire
+						</span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-success' : ctrl.bookEdition.authorFirstname.$dirty && ctrl.bookEdition.authorFirstname.$valid,
+           'has-error': ctrl.bookEdition.authorFirstname.$dirty && ctrl.bookEdition.authorFirstname.$invalid}">
+        <label for="authorFirstname" class="col-sm-2 control-label">Author firstname</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="authorFirstname"
+                 name="authorFirstname"
+                 ng-model="ctrl.book.author.firstname"
+                 required>
+          <span ng-show="ctrl.bookEdition.authorFirstname.$dirty" ng-messages="ctrl.bookEdition.authorFirstname.$error">
+						<span class="help-block" ng-message="required">
+							Ce champ est obligatoire
+						</span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-success' : ctrl.bookEdition.authorLastname.$dirty && ctrl.bookEdition.authorLastname.$valid,
+           'has-error': ctrl.bookEdition.authorLastname.$dirty && ctrl.bookEdition.authorLastname.$invalid}">
+        <label for="authorLastname" class="col-sm-2 control-label">Author lastname</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="authorLastname"
+                 name="authorLastname"
+                 ng-model="ctrl.book.author.lastName"
+                 required>
+          <span ng-show="ctrl.bookEdition.authorLastname.$dirty" ng-messages="ctrl.bookEdition.authorLastname.$error">
+						<span class="help-block" ng-message="required">
+							Ce champ est obligatoire
+						</span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-success' : ctrl.bookEdition.editor.$dirty && ctrl.bookEdition.editor.$valid,
+           'has-error': ctrl.bookEdition.editor.$dirty && ctrl.bookEdition.editor.$invalid}">
+        <label for="editor" class="col-sm-2 control-label">Editor</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="editor"
+                 name="editor"
+                 ng-model="ctrl.book.editor" required minlength="3">
+          <span ng-show="ctrl.bookEdition.editor.$dirty" ng-messages="ctrl.bookEdition.editor.$error">
+						<span class="help-block" ng-message="required">
+							Ce champ est obligatoire
+						</span>
+            <span class="help-block" ng-message="minlength">
+              Ce champ doit avoir au moins 3 caractères
+            </span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-success' : ctrl.bookEdition.image.$dirty && ctrl.bookEdition.image.$valid,
+           'has-error': ctrl.bookEdition.image.$dirty && ctrl.bookEdition.image.$invalid}">
+        <label for="image" class="col-sm-2 control-label">Image</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="image"
+                 name="image"
+                 ng-model="ctrl.book.image"
+                 ng-pattern="/^http://.+\.(jpe?g|gif)+/">
+          <span ng-show="ctrl.bookEdition.image.$dirty" ng-messages="ctrl.bookEdition.image.$error">
+						<span class="help-block" ng-message="pattern">
+							Url non valide
+						</span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-success' : ctrl.bookEdition.summary.$dirty && ctrl.bookEdition.summary.$valid,
+           'has-error': ctrl.bookEdition.summary.$dirty && ctrl.bookEdition.summary.$invalid}">
+        <label for="summary" class="col-sm-2 control-label">Summary</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="summary"
+                 name="summary"
+                 ng-model="ctrl.book.summary"
+                 required>
+          <span ng-show="ctrl.bookEdition.summary.$dirty" ng-messages="ctrl.bookEdition.summary.$error">
+						<span class="help-block" ng-message="required">
+							Ce champ est obligatoire
+						</span>
+					</span>
+        </div>
+      </div>
+      <div class="text-right">
+        <input type="submit" value="Save" class="btn btn-primary" ng-class="{disabled: ctrl.bookEdition.$invalid}" />
+      </div>
+    </form>
+  </div>
+</div>
