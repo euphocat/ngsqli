@@ -1,31 +1,20 @@
 <h1>Home</h1>
 
-<div class="panel panel-default"
-     style="padding: 5px 0;">
-  <div class="panel-body">
-    Search by title: <input type="text" ng-model="ctrl.search.title">
-  </div>
-</div>
+<search-box search-field="ctrl.search.title"></search-box>
 
 <table class="table table-bordered">
   <tr>
-    <th ng-click="ctrl.changeOrder('title')">Title
-      <span ng-if="ctrl.fieldOrder === 'title' && ctrl.reverse === false">&#9650;</span>
-      <span ng-if="ctrl.fieldOrder === 'title' && ctrl.reverse === true">&#9660;</span>
-    </th>
-    <th ng-click="ctrl.changeOrder('author.firstName')">Author firstname
-      <span ng-if="ctrl.fieldOrder === 'author.firstName' && ctrl.reverse === false">&#9650;</span>
-      <span ng-if="ctrl.fieldOrder === 'author.firstName' && ctrl.reverse === true">&#9660;</span>
-    </th>
-    <th ng-click="ctrl.changeOrder('author.lastName')">Author lastname
-      <span ng-if="ctrl.fieldOrder === 'author.lastName' && ctrl.reverse === false">&#9650;</span>
-      <span ng-if="ctrl.fieldOrder === 'author.lastName' && ctrl.reverse === true">&#9660;</span></th>
+    <th table-header field="title"></th>
+    <th table-header field="author.firstName"></th>
+    <th table-header field="author.lastName"></th>
+    <th table-header field="category"></th>
     <th>Actions</th>
   </tr>
-  <tr ng-repeat="book in ctrl.books | orderBy: ctrl.fieldOrder : ctrl.reverse | filter: ctrl.search">
+  <tr ng-repeat="book in ctrl.books | orderBy: ctrl.getFieldOrder() : ctrl.getIsReverse() | filter: ctrl.search">
     <td>{{book.title}}</td>
     <td>{{book.author.firstName}}</td>
     <td>{{book.author.lastName}}</td>
+    <td><category-pills category="book.category"></category-pills></td>
     <td>
       <button class="btn" ng-click="ctrl.deleteBook(book.id)">Delete</button>
       <a href="/edition/{{book.id}}" class="btn btn-primary">Edit</a>

@@ -1,0 +1,15 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li ng-class="{active: ctrl.isActive('home') }">
+        <a href="/">Home</a>
+      </li>
+      <li ng-class="{active: ctrl.isActive('edition') }">
+        <a href="/edition">Add</a>
+      </li>
+      <li ng-class="{active: ctrl.isActive('dashboard') }">
+        <a href="/dashboard">Dashboard</a>
+      </li>
+    </ul>
+  </div>
+</nav>

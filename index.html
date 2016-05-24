@@ -12,51 +12,54 @@
     .active {
       font-weight: bold;
     }
+    .tableHeader {
+      cursor: pointer;
+    }
+    .tag-pill {
+      padding: 5px;
+      margin-right: 5px;
+      border-radius: 3px;
+      font-size: smaller;
+    }
   </style>
 </head>
 <body>
 
-<div ng-controller="MainCtrl as ctrl">
+<app-menu></app-menu>
 
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <ul class="nav navbar-nav">
-        <li ng-class="{active: ctrl.isActive('home') }">
-          <a href="/">Home</a>
-        </li>
-        <li ng-class="{active: ctrl.isActive('edition') }">
-          <a href="/edition">Add</a>
-        </li>
-        <li ng-class="{active: ctrl.isActive('dashboard') }">
-          <a href="/dashboard">Dashboard</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container" ng-view>
-  </div>
-
-</div>
+<div class="container" ng-view></div>
 
 
 <script src="/vendors/bootstrap/ui-bootstrap-tpls-1.3.2.min.js"></script>
 <script src="/app/app.js"></script>
-<script src="/app/MainCtrl.js"></script>
+
+
 
 <script src="/app/home/module.js"></script>
 <script src="/app/home/HomeCtrl.js"></script>
+<script src="/app/home/tableHeaderService.js"></script>
+<script src="/app/home/tableHeaderDirective.js"></script>
+<script src="/app/home/searchBoxDirective.js"></script>
+<script src="/app/home/categoryPillsDirective.js"></script>
 
 <script src="/app/edition/module.js"></script>
 <script src="/app/edition/EditionCtrl.js"></script>
 
 <script src="/app/dashboard/module.js"></script>
 <script src="/app/dashboard/DashboardCtrl.js"></script>
+<script src="/app/dashboard/authorsListDirective.js"></script>
+<script src="/app/dashboard/categoriesListDirective.js"></script>
 
 <script src="/app/common/module.js"></script>
 <script src="/app/common/navigationService.js"></script>
 <script src="/app/common/backendConstant.js"></script>
 <script src="/app/common/booksService.js"></script>
+
+<script src="/app/common/directives/appMenuDirective.js"></script>
+
+<script src="app/common/filters/ascDescFilter.js"></script>
+<script src="app/common/filters/categoryFilter.js"></script>
+<script src="app/common/filters/formatFieldTitleFilter.js"></script>
 
 </body>
 </html>

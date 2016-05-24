@@ -3,46 +3,36 @@
   'use strict';
 
   angular.module('home')
-    .controller('HomeCtrl', ['bookService', 'navigationService', function (bookService, navigationService) {
+    .controller('HomeCtrl', [
+      'bookService', 'navigationService',
+      'tableHeaderService',
+      function (bookService, navigationService, tableHeaderService) {
 
-      var vm = this;
+        var vm = this;
 
-      vm.deleteBook = deleteBook;
-      vm.editBook = editBook;
+        vm.deleteBook = deleteBook;
+        vm.editBook = editBook;
+        vm.getFieldOrder = tableHeaderService.getFieldOrder;
+        vm.getIsReverse = tableHeaderService.getIsReverse;
 
-      vm.changeOrder = changeOrder;
-      vm.reverse = false;
+        init();
 
-      init();
-
-      function init () {
-        bookService.getBooks()
-          .success(function (data) {
-            vm.books = data;
-          });
-      }
-
-      function deleteBook (id) {
-        bookService.deleteBook(id)
-          .success(init);
-      }
-
-      function editBook (id) {
-        navigationService.setActive('update', id)
-      }
-
-      function changeOrder (field) {
-
-        if(field === vm.fieldOrder) {
-          vm.reverse = !vm.reverse;
-        } else {
-          vm.reverse = false;
+        function init () {
+          bookService.getBooks()
+            .success(function (data) {
+              vm.books = data;
+            });
         }
 
-        vm.fieldOrder = field;
+        function deleteBook (id) {
+          bookService.deleteBook(id)
+            .success(init);
+        }
 
-      }
+        function editBook (id) {
+          navigationService.setActive('update', id)
+        }
 
-    }]);
+      }]);
 
 })();

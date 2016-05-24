@@ -12,7 +12,17 @@ let books = [
       firstName: 'JRR',
       lastName: 'Tolkien'
     },
-    category: 'fantasy,hobbits'
+    category: 'fantasy,hobbits,war,dwarves,elves'
+  },
+  {
+    id: uuid.v4(),
+    title: 'The Silmarillion',
+    isbn: 1234578891112,
+    author: {
+      firstName: 'JRR',
+      lastName: 'Tolkien'
+    },
+    category: 'fantasy,hobbits,war,dwarves,elves'
   },
   {
     id: uuid.v4(),

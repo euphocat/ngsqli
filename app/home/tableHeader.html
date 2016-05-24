@@ -1,0 +1,5 @@
+<span>
+  <span class="tableHeader"
+        ng-click="ctrl.changeOrder()">{{ ctrl.field | formatFieldTitle }}</span>
+  <span ng-if="ctrl.isFieldOrderActive()">{{ctrl.getIsReverse() | ascDesc}}</span>
+</span>
