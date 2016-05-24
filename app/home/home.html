@@ -1,14 +1,28 @@
 <h1>Home</h1>
 
+<div class="panel panel-default"
+     style="padding: 5px 0;">
+  <div class="panel-body">
+    Search by title: <input type="text" ng-model="ctrl.search.title">
+  </div>
+</div>
 
 <table class="table table-bordered">
   <tr>
-    <th>Title</th>
-    <th>Author firstname</th>
-    <th>Author lastname</th>
+    <th ng-click="ctrl.changeOrder('title')">Title
+      <span ng-if="ctrl.fieldOrder === 'title' && ctrl.reverse === false">&#9650;</span>
+      <span ng-if="ctrl.fieldOrder === 'title' && ctrl.reverse === true">&#9660;</span>
+    </th>
+    <th ng-click="ctrl.changeOrder('author.firstName')">Author firstname
+      <span ng-if="ctrl.fieldOrder === 'author.firstName' && ctrl.reverse === false">&#9650;</span>
+      <span ng-if="ctrl.fieldOrder === 'author.firstName' && ctrl.reverse === true">&#9660;</span>
+    </th>
+    <th ng-click="ctrl.changeOrder('author.lastName')">Author lastname
+      <span ng-if="ctrl.fieldOrder === 'author.lastName' && ctrl.reverse === false">&#9650;</span>
+      <span ng-if="ctrl.fieldOrder === 'author.lastName' && ctrl.reverse === true">&#9660;</span></th>
     <th>Actions</th>
   </tr>
-  <tr ng-repeat="book in ctrl.books">
+  <tr ng-repeat="book in ctrl.books | orderBy: ctrl.fieldOrder : ctrl.reverse | filter: ctrl.search">
     <td>{{book.title}}</td>
     <td>{{book.author.firstName}}</td>
     <td>{{book.author.lastName}}</td>

@@ -6,8 +6,12 @@
     .controller('HomeCtrl', ['bookService', 'navigationService', function (bookService, navigationService) {
 
       var vm = this;
+
       vm.deleteBook = deleteBook;
       vm.editBook = editBook;
+
+      vm.changeOrder = changeOrder;
+      vm.reverse = false;
 
       init();
 
@@ -25,6 +29,18 @@
 
       function editBook (id) {
         navigationService.setActive('update', id)
+      }
+
+      function changeOrder (field) {
+
+        if(field === vm.fieldOrder) {
+          vm.reverse = !vm.reverse;
+        } else {
+          vm.reverse = false;
+        }
+
+        vm.fieldOrder = field;
+
       }
 
     }]);
