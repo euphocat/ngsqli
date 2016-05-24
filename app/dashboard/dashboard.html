@@ -1,4 +1,12 @@
 <h1>Dashboard</h1>
 
-<authors-list></authors-list>
-<category-list></category-list>
+<div ng-if="!ctrl.isSuccess"
+     style="margin-top: 20px"
+     class="alert alert-warning">Loading...</div>
+
+<div ng-if="ctrl.isSuccess"
+     style="margin-top: 20px"
+     class="alert alert-info">All the data have been fetch correctly</div>
+
+<authors-list authors="ctrl.authors"></authors-list>
+<category-list categories="ctrl.categories"></category-list>
