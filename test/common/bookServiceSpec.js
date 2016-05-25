@@ -46,7 +46,7 @@ describe('booksService', function () {
   }));
 
   it('should work !', function () {
-    expect(true).toBe(false);
+    expect(true).toBe(true);
   });
 
   it('should fetch a list of book', function () {
@@ -55,8 +55,8 @@ describe('booksService', function () {
 
     booksService.getBooks().then(function (books) {
       expect(books.data).toBeDefined();
-      expect(books.data.length).toEqual(false);
-      expect(books.data[0].title).toEqual('???');
+      expect(books.data.length).toEqual(3);
+      expect(books.data[0].title).toEqual('The Lords Of The Rings');
     });
 
     $httpBackend.flush();
@@ -69,8 +69,8 @@ describe('booksService', function () {
 
     booksService.getUniqueAuthors().then(function (authors) {
       expect(authors).toBeDefined();
-      expect(authors.length).toEqual(false);
-      var isArrayHavingDuplicatedValues = true;
+      expect(authors.length).toEqual(2);
+      var isArrayHavingDuplicatedValues = _.uniq(authors).length !== authors.length;
       expect(isArrayHavingDuplicatedValues).toBe(false);
     });
 
